@@ -115,6 +115,37 @@ nav ul li ul li a:hover {
     color: #fff;
 }
 
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #aaa;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* Hero Section with Parallax */
 .hero-section {
     height: 500px;
@@ -141,12 +172,14 @@ nav ul li ul li a:hover {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    color: #fff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     font-weight: 300;
+    color: #fff;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
@@ -275,6 +308,53 @@ footer {
         font-size: 1.2rem;
     }
     
+    /* Show mobile menu button */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* Hide menu by default on mobile */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #222;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    
+    /* Show menu when toggled */
+    nav ul.mobile-menu-open {
+        display: flex;
+    }
+    
+    nav ul li {
+        width: 100%;
+    }
+    
+    nav ul li a {
+        padding: 1rem;
+        border-bottom: 1px solid #333;
+    }
+    
+    nav ul li ul {
+        position: static;
+        display: none;
+        box-shadow: none;
+        background-color: #1a1a1a;
+    }
+    
+    nav ul li:hover ul {
+        display: none;
+    }
+    
+    /* Show dropdown when parent is in open menu */
+    nav ul.mobile-menu-open li ul {
+        display: flex;
+    }
+    
     .site-title {
         font-size: 1.8rem;
     }
@@ -283,19 +363,7 @@ footer {
         font-size: 1rem;
     }
     
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav ul li ul {
-        position: static;
-        display: none;
-        box-shadow: none;
-    }
-    
-    nav ul li:hover ul {
-        display: flex;
-    }
+    /* Remove old nav styles for mobile - handled above */
     
     .footer-container {
         flex-direction: column;
